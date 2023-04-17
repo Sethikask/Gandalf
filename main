@@ -1,0 +1,21 @@
+from datetime import datetime, time
+from time import sleep
+from bvPlayer import bvPlayer
+
+def act(x):
+    return x+10
+
+def wait_start(runTime, action):
+    startTime = time(*(map(int, runTime.split(':'))))
+    while startTime > datetime.today().time():
+        sleep(1)
+    return action
+
+try:
+    with open("time.txt", "r") as f:
+        wait_start(f.read(), lambda: act(100)) #Wait till given time (24 hr hh:mm)
+except Exception:
+    pass
+
+video_file = "sax guy.mp4"
+bvPlayer(video_file)
